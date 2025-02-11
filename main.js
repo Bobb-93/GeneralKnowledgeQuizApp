@@ -8,10 +8,13 @@ let quizCategory = null;
 
 let dom = {
     beginButton: document.getElementById("begin-button"),
-
+    categorySelect: document.getElementById("category-select"),
+    difficultySelect: document.getElementById("difficulty-select")
 };
 
-console.log(dom.newQuizButton);
+let selectedCategory = dom.categorySelect.selectedOptions;
+console.log(selectedCategory);
+
 
 dom.beginButton.addEventListener("click", function () {
     location.assign("./quiz.html");  
