@@ -1,0 +1,11 @@
+#difficulty-label{
+    visibility: hidden;
+}
+
+#difficulty-select{
+    visibility: hidden;
+}
+
+#begin-button{
+    visibility: hidden;
+}
