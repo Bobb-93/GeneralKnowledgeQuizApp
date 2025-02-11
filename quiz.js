@@ -35,6 +35,12 @@ document.addEventListener("DOMContentLoaded", function () {
     async function startQuiz() {
         quizData = getQuizData();
         console.log(quizData);
+
+        for (let i = 0; i < quizData.length; i++) {
+            const question = quizData[i];
+            console.log(question);
+            
+        }
     }
 
     startQuiz();
