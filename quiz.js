@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     async function startQuiz() {
         quizData = getQuizData();
         console.log(quizData);
-
     }
+
+    startQuiz();
 });
