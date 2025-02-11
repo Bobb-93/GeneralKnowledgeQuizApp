@@ -38,6 +38,7 @@ dom.difficultySelect.addEventListener("change", function () {
 dom.beginButton.addEventListener("click", function () {
     const category = document.getElementById("category-select").value;
     const difficulty = document.getElementById("difficulty-select").value;
+    
     window.location.href = `quiz.html?category=${category}&difficulty=${difficulty}`;
 
     // location.assign("./quiz.html");  
