@@ -9,3 +9,25 @@
 #begin-button{
     visibility: hidden;
 }
+
+select>option {
+    background-color: #b8e1ba;
+}
+
+button{
+    background-color: #2D96C2;
+    color: #FFF;
+    border: none;
+    cursor: pointer;
+}
+
+header{
+    text-align: center;
+}
+
+/* body {
+    display: flex;
+    align-items: center;*/
+    /* justify-content: center; */
+    /* height: 100vh; */
+/* } */
