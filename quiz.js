@@ -3,7 +3,9 @@ let dom = {
     displayDifficulty: document.getElementById("display-difficulty"),
     finishButton: document.getElementById("finish-button"),
     questionNumber: document.getElementById("question-number"),
-    totalQuestions: document.getElementById("total-questions")
+    totalQuestions: document.getElementById("total-questions"),
+    questionText: document.getElementById("question-text"),
+    optionsArea: document.getElementById("options-area"),
 };
 
 function shuffleOptions(options){
@@ -78,6 +80,23 @@ document.addEventListener("DOMContentLoaded", function () {
             let shuffledOptions = shuffleOptions(options); // Shuffle the options
             console.log(`Shuffled Options: ${shuffledOptions}`);
 
+            dom.questionNumber.innerText = currentQuestionNumber;
+            dom.questionText.innerText = question.question;
+
+            for (let j = 0; j < shuffledOptions.length; j++) {
+                let option = shuffledOptions[j];
+                dom.optionsArea.innerHTML += `
+                    <li>
+                        <label>
+                            <input type="radio" value="${option}"> ${option}
+                        </label>
+                    </li>
+                `;
+            }
+
+
+            // dom.optionsArea.innerText = "";
+            currentQuestionNumber++;
 
             // console.log(`Question ${index + 1}:`, question.question);
             // console.log("Options:", [...question.incorrect_answers, question.correct_answer]);

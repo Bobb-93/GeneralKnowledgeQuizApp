@@ -42,6 +42,10 @@ main {
     margin: 0 auto;
 }
 
+li{
+    list-style-type: none;
+}
+
 /* body {
     display: flex;
     align-items: center;*/
