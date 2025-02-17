@@ -2,6 +2,10 @@
     visibility: hidden;
 }
 
+.game-variables{
+    font-style: italic;
+}
+
 /* #difficulty-select {
     visibility: hidden;
 }

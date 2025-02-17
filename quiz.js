@@ -1,5 +1,6 @@
 let dom = {
-    displayCategory: document.querySelector("#question-area>h2>span"),
+    displayCategory: document.getElementById("display-category"),
+    displayDifficulty: document.getElementById("display-difficulty"),
     finishButton: document.getElementById("finish-button"),
     questionNumber: document.getElementById("question-number"),
     totalQuestions: document.getElementById("total-questions")
@@ -33,10 +34,10 @@ document.addEventListener("DOMContentLoaded", function () {
     dom.totalQuestions.innerText = numberOfQuestions;
     
     const category = params.get("category");
-    
     dom.displayCategory.innerText = params.get("categoryText");
 
     const difficulty = params.get("difficulty");
+    dom.displayDifficulty.innerText = difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
 
     console.log("Selected Category:", category);
     console.log("Selected Difficulty:", difficulty);
