@@ -33,14 +33,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     async function startQuiz() {
-        quizData = getQuizData();
+        quizData = await getQuizData();
+
+        if (!quizData || !quizData.results) {
+            console.error("No quiz data received.");
+            return;
+        }
+
         console.log(quizData);
 
-        for (let i = 0; i < quizData.length; i++) {
-            const question = quizData[i];
-            console.log(question);
-            
-        }
+        quizData.results.forEach((question, index) => {
+            console.log(`Question ${index + 1}:`, question.question);
+            console.log("Options:", [...question.incorrect_answers, question.correct_answer]);
+        });
     }
 
     startQuiz();
