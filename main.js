@@ -17,8 +17,8 @@ dom.categorySelect.addEventListener("change", function () {
         dom.difficultySelect.style.visibility = "visible";
     } else {
         //just in case
-        dom.difficultyLabel.style.visibility = "visible";
-        dom.difficultySelect.style.visibility = "visible";
+        dom.difficultyLabel.style.visibility = "hidden";
+        dom.difficultySelect.style.visibility = "hidden";
         dom.beginButton.style.visibility = "hidden";
 
     }
