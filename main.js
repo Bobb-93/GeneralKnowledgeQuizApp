@@ -1,7 +1,6 @@
-let randomOptions =[]
+
 let opts_input = Array.from(document.getElementsByName('options'));
-let userScore = 0;
-let currentQuestionNumber = 1
+
 let quizCategory = null;
 
 let dom = {

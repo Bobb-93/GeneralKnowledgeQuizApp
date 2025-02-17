@@ -2,8 +2,22 @@ let dom = {
     finishButton: document.getElementById("finish-button")
 };
 
-let quizData = null;
+function shuffleOptions(options){
+    
+    let shuffled = [...options];
 
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i+1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];    
+    }
+
+    return shuffled;
+}
+
+let quizData = null;
+let userScore = 0;
+let currentQuestionNumber = 1;
+let randomOptions =[];
 
 dom.finishButton.addEventListener("click", function () {
     location.assign("./results.html");
@@ -44,8 +58,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
         quizData.results.forEach((question, index) => {
             console.log(`Question ${index + 1}:`, question.question);
+            let correctAnswer = question.correct_answer;
+            console.log(`correctAnswer: ${correctAnswer}`);
+
+            let options = [...question.incorrect_answers, question.correct_answer]; // Combine answers
             console.log("Options:", [...question.incorrect_answers, question.correct_answer]);
+
+            let shuffledOptions = shuffleOptions(options); // Shuffle the options
+            console.log(`Shuffled Options: ${shuffledOptions}`);
+
+
+            // console.log(`Question ${index + 1}:`, question.question);
+            // console.log("Options:", [...question.incorrect_answers, question.correct_answer]);
+
+            // let correctAnswer = question.correct_answer;
+            // console.log(correctAnswer);
+            
+            // randomOptions.push(...question.incorrect_answers, question.correct_answer);
+            // shuffleOptions(randomOptions);
+            // console.log(`Shuffled Options: ${randomOptions}`);
+
+            // randomOptions = [];
         });
+
+        
+        
     }
 
     startQuiz();
