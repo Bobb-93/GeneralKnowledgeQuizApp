@@ -24,6 +24,7 @@ let quizData = null;
 let userScore = 0;
 let currentQuestionNumber = 1;
 let randomOptions =[];
+let correctAnswers = 0;
 
 dom.finishButton.addEventListener("click", function () {
     location.assign("./results.html");
@@ -92,8 +93,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         </label>
                     </li>
                 `;
+                return;
             }
 
+            
 
             // dom.optionsArea.innerText = "";
             currentQuestionNumber++;
@@ -109,8 +112,13 @@ document.addEventListener("DOMContentLoaded", function () {
             // console.log(`Shuffled Options: ${randomOptions}`);
 
             // randomOptions = [];
+            console.log('11111');
+            
+        console.dir(shuffledOptions);
+
         });
 
+        // console.log(`shuffleOptions: ${shuffledOptions}`);
         
         
     }
