@@ -25,6 +25,7 @@ dom.finishButton.addEventListener("click", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     const params = new URLSearchParams(window.location.search);
+    const numberOfQuestions = params.get("numberOfQuestions");
     const category = params.get("category");
     const difficulty = params.get("difficulty");
 
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     async function getQuizData() {
         console.log('async function');
 
-        let url = `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`;
+        let url = `https://opentdb.com/api.php?amount=${numberOfQuestions}&category=${category}&difficulty=${difficulty}&type=multiple`;
         try {
             let data = await fetch(url);
             if (!data.ok) {

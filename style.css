@@ -1,12 +1,20 @@
-#difficulty-label{
+#difficulty-label {
     visibility: hidden;
 }
 
-#difficulty-select{
+#difficulty-select {
     visibility: hidden;
 }
 
-#begin-button{
+#begin-button {
+    visibility: hidden;
+}
+
+#question-amount-label {
+    visibility: hidden;
+}
+
+#question-amount {
     visibility: hidden;
 }
 
@@ -14,18 +22,18 @@ select>option {
     background-color: #b8e1ba;
 }
 
-button{
+button {
     background-color: #2D96C2;
     color: #FFF;
     border: none;
     cursor: pointer;
 }
 
-header{
+header {
     text-align: center;
 }
 
-main{
+main {
     text-align: center;
     margin: 0 auto;
 }
@@ -33,6 +41,6 @@ main{
 /* body {
     display: flex;
     align-items: center;*/
-    /* justify-content: center; */
-    /* height: 100vh; */
+/* justify-content: center; */
+/* height: 100vh; */
 /* } */
