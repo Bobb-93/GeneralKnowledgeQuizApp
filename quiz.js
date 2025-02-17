@@ -1,5 +1,8 @@
 let dom = {
-    finishButton: document.getElementById("finish-button")
+    displayCategory: document.querySelector("#question-area>h2>span"),
+    finishButton: document.getElementById("finish-button"),
+    questionNumber: document.getElementById("question-number"),
+    totalQuestions: document.getElementById("total-questions")
 };
 
 function shuffleOptions(options){
@@ -25,8 +28,14 @@ dom.finishButton.addEventListener("click", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     const params = new URLSearchParams(window.location.search);
+
     const numberOfQuestions = params.get("numberOfQuestions");
+    dom.totalQuestions.innerText = numberOfQuestions;
+    
     const category = params.get("category");
+    
+    dom.displayCategory.innerText = params.get("categoryText");
+
     const difficulty = params.get("difficulty");
 
     console.log("Selected Category:", category);

@@ -1,5 +1,4 @@
 
-let opts_input = Array.from(document.getElementsByName('options'));
 
 let quizCategory = null;
 
@@ -37,11 +36,12 @@ dom.difficultySelect.addEventListener("change", function () {
 })
 
 dom.beginButton.addEventListener("click", function () {
-    const category = document.getElementById("category-select").value;
+    const category = dom.categorySelect.value;
+    const categoryText = dom.categorySelect.options[dom.categorySelect.selectedIndex].text;
     const numberOfQuestions = document.getElementById("question-amount").value;
     const difficulty = document.getElementById("difficulty-select").value;
 
-    window.location.href = `quiz.html?category=${category}&numberOfQuestions=${numberOfQuestions}&difficulty=${difficulty}`;
+    window.location.href = `quiz.html?category=${category}&categoryText=${categoryText}&numberOfQuestions=${numberOfQuestions}&difficulty=${difficulty}`;
 
     // location.assign("./quiz.html");  
 });
