@@ -1,8 +1,8 @@
-#difficulty-label {
+#difficulty-label, #difficulty-select, #begin-button, #question-amount-label, #question-amount {
     visibility: hidden;
 }
 
-#difficulty-select {
+/* #difficulty-select {
     visibility: hidden;
 }
 
@@ -16,7 +16,7 @@
 
 #question-amount {
     visibility: hidden;
-}
+} */
 
 select>option {
     background-color: #b8e1ba;
