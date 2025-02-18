@@ -79,13 +79,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function nextQuestion() {
         if (currentQuestionNumber >= quizData.results.length) {
-            
+
             document.getElementById("next-button").style.display = "none";
 
             let finishQuizButton = document.createElement("button");
             finishQuizButton.id = "finish-quiz-button";
             finishQuizButton.innerText = "Finish Quiz";
-            finishQuizButton.addEventListener("click", function(){
+            finishQuizButton.addEventListener("click", function () {
                 window.location.href = `results.html?correctAnswers=${correctAnswers}&numberOfQuestions=${numberOfQuestions}`;
             });
             dom.optionsArea.appendChild(finishQuizButton);
@@ -113,6 +113,19 @@ document.addEventListener("DOMContentLoaded", function () {
                     <input type="radio" name="answer" value="${option}"> ${option} 
                 </label>
             `;
+
+            //highlight selected answer
+            let radioInput = optionElement.querySelector("input");
+            let label = optionElement.querySelector("label");
+
+            radioInput.addEventListener("change", function () {
+                document.querySelectorAll("#options-area label").forEach(l => {
+                    l.style.color = "black";
+                    l.style.fontWeight = "normal";
+                });
+                label.style.color = "#2D96C2";
+                label.style.fontWeight = "bold";
+            });
 
             dom.optionsArea.appendChild(optionElement);
         });
@@ -143,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
             correctAnswers++;
             dom.feedbackText.style.color = "#0F0";
             dom.feedbackText.innerText = "Right Answer!";
-        } else{
+        } else {
             dom.feedbackText.style.color = "#F00";
             dom.feedbackText.innerText = `Wrong Answer! The right answer is ${correctAnswer}.`;
         }
@@ -153,5 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
         nextQuestion();
     }
 
+
     startQuiz();
+
 });
