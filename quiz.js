@@ -21,10 +21,10 @@ function shuffleOptions(options){
 }
 
 let quizData = null;
-let userScore = 0;
 let currentQuestionNumber = 1;
 let randomOptions =[];
 let correctAnswers = 0;
+let correctAnswer;
 
 dom.finishButton.addEventListener("click", function () {
     location.assign("./results.html");
@@ -68,59 +68,65 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        console.log(quizData);
+        nextQuestion();
+    }
 
-        quizData.results.forEach((question, index) => {
-            console.log(`Question ${index + 1}:`, question.question);
-            let correctAnswer = question.correct_answer;
-            console.log(`correctAnswer: ${correctAnswer}`);
+    function nextQuestion() {
+        if(currentQuestionNumber >= quizData.results.length){
+            window.location.href = `results.html?correctAnswers=${correctAnswers}`;
+            return;
+        }
 
-            let options = [...question.incorrect_answers, question.correct_answer]; // Combine answers
-            console.log("Options:", [...question.incorrect_answers, question.correct_answer]);
+        let question = quizData.results[currentQuestionNumber];
+        correctAnswer = question.correct_answer;
+        let options = [...question.incorrect_answers, correctAnswer];
 
-            let shuffledOptions = shuffleOptions(options); // Shuffle the options
-            console.log(`Shuffled Options: ${shuffledOptions}`);
+        let shuffledOptions = shuffleOptions(options);
 
-            dom.questionNumber.innerText = currentQuestionNumber;
-            dom.questionText.innerText = question.question;
+        dom.questionNumber.innerText = currentQuestionNumber;
+        dom.questionText.innerText = question.question;
 
-            for (let j = 0; j < shuffledOptions.length; j++) {
-                let option = shuffledOptions[j];
-                dom.optionsArea.innerHTML += `
-                    <li>
-                        <label>
-                            <input type="radio" value="${option}"> ${option}
-                        </label>
-                    </li>
-                `;
-                return;
-            }
+        //clear optionsArea
+        dom.optionsArea.innerHTML = "";
 
-            
+        shuffleOptions.forEach(option => {
+            let optionElement = document.createElement("li");
 
-            // dom.optionsArea.innerText = "";
-            currentQuestionNumber++;
+            optionElement.innerHTML = `
+                <label>
+                    <input type="radio" name="answer" value="${option}"> ${option} 
+                </label>
+            `;
 
-            // console.log(`Question ${index + 1}:`, question.question);
-            // console.log("Options:", [...question.incorrect_answers, question.correct_answer]);
-
-            // let correctAnswer = question.correct_answer;
-            // console.log(correctAnswer);
-            
-            // randomOptions.push(...question.incorrect_answers, question.correct_answer);
-            // shuffleOptions(randomOptions);
-            // console.log(`Shuffled Options: ${randomOptions}`);
-
-            // randomOptions = [];
-            console.log('11111');
-            
-        console.dir(shuffledOptions);
-
+            dom.optionsArea.appendChild(optionElement);
         });
 
-        // console.log(`shuffleOptions: ${shuffledOptions}`);
+        //Show "Next button"
+        if(!document.getElementById("next-button")){
+            let nextButton = document.createElement("button");
+            nextButton.id="next-button";
+            nextButton.innerText="Next Question";
+            nextButton.addEventListener("click", checkAnswer);
+            dom.optionsArea.appendChild(nextButton);
+        }
+    }
+
+    function checkAnswer(){
+        let selectedOption = document.querySelector(`input[name="answer"]:checked`);
+
+        if(!selectedOption){
+            alert("Please select an answer!");
+            return;
+        }
+
+        let userAnswer = selectedOption.value;
         
-        
+        if(userAnswer===correctAnswer){
+            correctAnswers++;
+        }
+
+        currentQuestionNumber++;
+        nextQuestion();
     }
 
     startQuiz();
