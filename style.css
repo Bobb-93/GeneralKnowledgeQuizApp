@@ -1,9 +1,21 @@
-#difficulty-label, #difficulty-select, #begin-button, #question-amount-label, #question-amount {
+#difficulty-label,
+#difficulty-select,
+#begin-button,
+#question-amount-label,
+#question-amount {
     visibility: hidden;
 }
 
-.game-variables{
+.game-variables {
     font-style: italic;
+}
+
+/* input{
+    cursor: pointer;
+} */
+
+#options-area label{
+    cursor: pointer;
 }
 
 /* #difficulty-select {
@@ -42,7 +54,7 @@ main {
     margin: 0 auto;
 }
 
-li{
+li {
     list-style-type: none;
 }
 

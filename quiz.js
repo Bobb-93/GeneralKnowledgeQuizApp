@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!document.getElementById("next-button")) {
             let nextButton = document.createElement("button");
             nextButton.id = "next-button";
-            nextButton.innerText = "Next Question";
+            nextButton.innerText = "Next";
             nextButton.addEventListener("click", checkAnswer);
             dom.optionsArea.appendChild(nextButton);
         }
