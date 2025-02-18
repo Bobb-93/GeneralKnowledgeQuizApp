@@ -1,7 +1,3 @@
-
-
-let quizCategory = null;
-
 let dom = {
     beginButton: document.getElementById("begin-button"),
     categorySelect: document.getElementById("category-select"),
@@ -43,6 +39,6 @@ dom.beginButton.addEventListener("click", function () {
 
     window.location.href = `quiz.html?category=${category}&categoryText=${categoryText}&numberOfQuestions=${numberOfQuestions}&difficulty=${difficulty}`;
 
-    // location.assign("./quiz.html");  
+    // location.assign("./quiz.html");
 });
 

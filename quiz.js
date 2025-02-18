@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log('async function');
 
         let url = `https://opentdb.com/api.php?amount=${numberOfQuestions}&category=${category}&difficulty=${difficulty}&type=multiple`;
-        localStorage.setItem("retryURL", url);
+        // localStorage.setItem("retryURL", url);
 
         try {
             let data = await fetch(url);
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function nextQuestion() {
         if (currentQuestionNumber >= quizData.results.length) {
-            window.location.href = `results.html?correctAnswers=${correctAnswers}`;
+            window.location.href = `results.html?correctAnswers=${correctAnswers}&totalQuestions=${numberOfQuestions}`;
             return;
         }
 
