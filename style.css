@@ -2,7 +2,8 @@
 #difficulty-select,
 #begin-button,
 #question-amount-label,
-#question-amount {
+#question-amount, 
+#feedback-text {
     visibility: hidden;
 }
 

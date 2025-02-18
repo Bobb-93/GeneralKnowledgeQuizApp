@@ -6,6 +6,7 @@ let dom = {
     totalQuestions: document.getElementById("total-questions"),
     questionText: document.getElementById("question-text"),
     optionsArea: document.getElementById("options-area"),
+    feedbackText: document.getElementById("feedback-text")
 };
 
 function shuffleOptions(options) {
@@ -126,10 +127,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let userAnswer = selectedOption.value;
 
+        dom.feedbackText.style.visibility = "visible";
+        
         if (userAnswer === correctAnswer) {
             correctAnswers++;
+            dom.feedbackText.style.color = "#0F0";
+            dom.feedbackText.innerText = "Right Answer!"
+        } else{
+            dom.feedbackText.style.color = "#F00";
+            dom.feedbackText.innerText = `Wrong Answer! The right answer is ${correctAnswer}.`
         }
 
+        // dom.feedbackText.style.color = "initial";
         currentQuestionNumber++;
         nextQuestion();
     }
