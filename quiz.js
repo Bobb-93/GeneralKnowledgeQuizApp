@@ -152,7 +152,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         dom.feedbackText.style.visibility = "visible";
 
-        if (userAnswer === correctAnswer) {
+        //trouble with "Romeo & Juliet" vs "Romeo &amp; Juliet" answer
+        if (userAnswer.replace(/&(amp);|&/g, "and") === correctAnswer.replace(/&(amp);|&/g, "and")) {
             correctAnswers++;
             dom.feedbackText.style.color = "#0F0";
             dom.feedbackText.innerText = "Right Answer!";
