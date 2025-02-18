@@ -10,9 +10,9 @@
     font-style: italic;
 }
 
-/* input{
+input{
     cursor: pointer;
-} */
+}
 
 #options-area label{
     cursor: pointer;
@@ -43,6 +43,7 @@ button {
     color: #FFF;
     border: none;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 header {
