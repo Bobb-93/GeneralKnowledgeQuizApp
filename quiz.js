@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //clear optionsArea
         dom.optionsArea.innerHTML = "";
 
-        shuffleOptions.forEach(option => {
+        shuffledOptions.forEach(option => {
             let optionElement = document.createElement("li");
 
             optionElement.innerHTML = `
