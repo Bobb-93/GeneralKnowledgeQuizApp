@@ -19,22 +19,6 @@ input{
     cursor: pointer;
 }
 
-/* #difficulty-select {
-    visibility: hidden;
-}
-
-#begin-button {
-    visibility: hidden;
-}
-
-#question-amount-label {
-    visibility: hidden;
-}
-
-#question-amount {
-    visibility: hidden;
-} */
-
 select>option {
     background-color: #b8e1ba;
 }
@@ -59,10 +43,3 @@ main {
 li {
     list-style-type: none;
 }
-
-/* body {
-    display: flex;
-    align-items: center;*/
-/* justify-content: center; */
-/* height: 100vh; */
-/* } */
