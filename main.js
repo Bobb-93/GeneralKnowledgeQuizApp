@@ -1,4 +1,4 @@
-let dom = {
+const dom = {
     beginButton: document.getElementById("begin-button"),
     categorySelect: document.getElementById("category-select"),
     difficultyLabel: document.getElementById("difficulty-label"),
@@ -29,7 +29,7 @@ dom.difficultySelect.addEventListener("change", function () {
         //just in case
         dom.beginButton.style.visibility = "hidden";
     }
-})
+});
 
 dom.beginButton.addEventListener("click", function () {
     const category = dom.categorySelect.value;

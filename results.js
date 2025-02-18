@@ -1,4 +1,4 @@
-let dom = {
+const dom = {
     retryButton: document.getElementById("retry-button"),
     newQuizButton: document.getElementById("new-quiz-button"),
     correctAnswers: document.getElementById("correct-answers"),

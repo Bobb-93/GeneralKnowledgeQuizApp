@@ -1,4 +1,4 @@
-let dom = {
+const dom = {
     displayCategory: document.getElementById("display-category"),
     displayDifficulty: document.getElementById("display-difficulty"),
     finishButton: document.getElementById("finish-button"),
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
             finishQuizButton.innerText = "Finish Quiz";
             finishQuizButton.addEventListener("click", function(){
                 window.location.href = `results.html?correctAnswers=${correctAnswers}&numberOfQuestions=${numberOfQuestions}`;
-            })
+            });
             dom.optionsArea.appendChild(finishQuizButton);
 
             return;
@@ -142,10 +142,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (userAnswer === correctAnswer) {
             correctAnswers++;
             dom.feedbackText.style.color = "#0F0";
-            dom.feedbackText.innerText = "Right Answer!"
+            dom.feedbackText.innerText = "Right Answer!";
         } else{
             dom.feedbackText.style.color = "#F00";
-            dom.feedbackText.innerText = `Wrong Answer! The right answer is ${correctAnswer}.`
+            dom.feedbackText.innerText = `Wrong Answer! The right answer is ${correctAnswer}.`;
         }
 
         // dom.feedbackText.style.color = "initial";
