@@ -79,7 +79,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function nextQuestion() {
         if (currentQuestionNumber >= quizData.results.length) {
-            window.location.href = `results.html?correctAnswers=${correctAnswers}&numberOfQuestions=${numberOfQuestions}`;
+            
+            document.getElementById("next-button").style.display = "none";
+
+            let finishQuizButton = document.createElement("button");
+            finishQuizButton.id = "finish-quiz-button";
+            finishQuizButton.innerText = "Finish Quiz";
+            finishQuizButton.addEventListener("click", function(){
+                window.location.href = `results.html?correctAnswers=${correctAnswers}&numberOfQuestions=${numberOfQuestions}`;
+            })
+            dom.optionsArea.appendChild(finishQuizButton);
+
             return;
         }
 
@@ -128,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let userAnswer = selectedOption.value;
 
         dom.feedbackText.style.visibility = "visible";
-        
+
         if (userAnswer === correctAnswer) {
             correctAnswers++;
             dom.feedbackText.style.color = "#0F0";
