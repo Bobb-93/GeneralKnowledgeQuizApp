@@ -3,7 +3,6 @@ let dom = {
     newQuizButton: document.getElementById("new-quiz-button"),
     correctAnswers: document.getElementById("correct-answers"),
     numberOfQuestions: document.getElementById("number-of-questions")
-
 };
 
 dom.retryButton.addEventListener("click", function () {
@@ -21,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const correctAnswers = params.get("correctAnswers");
     dom.correctAnswers.innerText  = correctAnswers;
 
-    const numberOfQuestions = params.get("number-of-questions");
+    const numberOfQuestions = params.get("numberOfQuestions");
     dom.numberOfQuestions.innerText  = numberOfQuestions;
 
 });

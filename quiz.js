@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function nextQuestion() {
         if (currentQuestionNumber >= quizData.results.length) {
-            window.location.href = `results.html?correctAnswers=${correctAnswers}&totalQuestions=${numberOfQuestions}`;
+            window.location.href = `results.html?correctAnswers=${correctAnswers}&numberOfQuestions=${numberOfQuestions}`;
             return;
         }
 
