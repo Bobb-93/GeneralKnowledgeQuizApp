@@ -31,12 +31,11 @@ button {
     margin-top: 10px;
 }
 
-header {
+header, #question-area, #options-area, #feedback-text, main {
     text-align: center;
 }
 
 main {
-    text-align: center;
     margin: 0 auto;
 }
 
