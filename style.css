@@ -2,20 +2,36 @@
 #difficulty-select,
 #begin-button,
 #question-amount-label,
-#question-amount, 
+#question-amount,
 #feedback-text {
     visibility: hidden;
+}
+
+#question-area,
+#options-area,
+#feedback-text,
+main,
+header {
+    text-align: center;
+}
+
+#options-area label {
+    cursor: pointer;
+    display: inline-block;
+    width: 200px;
+    margin-bottom: 5px;
+    border: 1px solid black;
 }
 
 .game-variables {
     font-style: italic;
 }
 
-input{
-    cursor: pointer;
+input[type=radio][name=answer] {
+    display: none
 }
 
-#options-area label{
+input {
     cursor: pointer;
 }
 
@@ -28,11 +44,7 @@ button {
     color: #FFF;
     border: none;
     cursor: pointer;
-    margin-top: 10px;
-}
-
-header, #question-area, #options-area, #feedback-text, main {
-    text-align: center;
+    margin-top: 5px;
 }
 
 main {
