@@ -67,8 +67,16 @@ document.addEventListener("DOMContentLoaded", function () {
     async function startQuiz() {
         quizData = await getQuizData();
 
-        if (!quizData || !quizData.results) {
+        if (!quizData || !quizData.results || quizData.results.length === 0) {
             console.error("No quiz data received.");
+            dom.questionText.innerText = "Not enough questions available for this category and difficulty. Please try another category/another difficulty or reduce the number of questions.";
+            
+            let backButton = document.createElement("button");
+            backButton.id = "back-button";
+            backButton.innerText = "Back";
+            backButton.addEventListener("click", () => location.assign("./index.html"));
+            dom.optionsArea.appendChild(backButton);
+
             return;
         }
 
@@ -80,15 +88,23 @@ document.addEventListener("DOMContentLoaded", function () {
     function nextQuestion() {
         if (currentQuestionNumber >= quizData.results.length) {
 
-            document.getElementById("next-button").style.display = "none";
+            let nextButton =  document.getElementById("next-button");
 
-            let finishQuizButton = document.createElement("button");
-            finishQuizButton.id = "finish-quiz-button";
-            finishQuizButton.innerText = "Finish Quiz";
-            finishQuizButton.addEventListener("click", function () {
-                window.location.href = `results.html?correctAnswers=${correctAnswers}&numberOfQuestions=${numberOfQuestions}`;
-            });
-            dom.optionsArea.appendChild(finishQuizButton);
+            if(nextButton){
+                nextButton.style.display = "none";
+            }
+
+            let finishQuizButton;
+
+            if(!finishQuizButton){
+                finishQuizButton = document.createElement("button");
+                finishQuizButton.id = "finish-quiz-button";
+                finishQuizButton.innerText = "Finish Quiz";
+                finishQuizButton.addEventListener("click", function () {
+                    window.location.href = `results.html?correctAnswers=${correctAnswers}&numberOfQuestions=${numberOfQuestions}`;
+                });
+                dom.optionsArea.appendChild(finishQuizButton);
+            }
 
             return;
         }
@@ -129,6 +145,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             dom.optionsArea.appendChild(optionElement);
         });
+
+        let nextButton =  document.getElementById("next-button");
 
         //Show "Next button"
         if (!document.getElementById("next-button")) {
