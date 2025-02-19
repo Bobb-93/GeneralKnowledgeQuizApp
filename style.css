@@ -18,7 +18,7 @@ header {
 #options-area label {
     cursor: pointer;
     display: inline-block;
-    width: 200px;
+    width: 400px;
     margin-bottom: 5px;
     border: 1px solid black;
 }
@@ -31,12 +31,16 @@ input[type=radio][name=answer] {
     display: none
 }
 
+select>option {
+    background-color: #b8e1ba;
+}
+
 input {
     cursor: pointer;
 }
 
-select>option {
-    background-color: #b8e1ba;
+body{
+    background-color: cornsilk;
 }
 
 button {
