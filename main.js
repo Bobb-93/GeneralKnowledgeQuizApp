@@ -7,7 +7,7 @@ const dom = {
     difficultySelect: document.getElementById("difficulty-select")
 };
 
-dom.categorySelect.addEventListener("change", function () {
+dom.categorySelect.addEventListener("change", () => {
     if (dom.categorySelect.value) {
         dom.questionAmountLabel.style.visibility = "visible";
         dom.questionAmount.style.visibility = "visible";
@@ -22,7 +22,7 @@ dom.categorySelect.addEventListener("change", function () {
     }
 });
 
-dom.difficultySelect.addEventListener("change", function () {
+dom.difficultySelect.addEventListener("change", () => {
     if (dom.difficultySelect.value) {
         dom.beginButton.style.visibility = "visible";
     } else {
@@ -31,7 +31,7 @@ dom.difficultySelect.addEventListener("change", function () {
     }
 });
 
-dom.beginButton.addEventListener("click", function () {
+dom.beginButton.addEventListener("click", () => {
     const category = dom.categorySelect.value;
     const categoryText = dom.categorySelect.options[dom.categorySelect.selectedIndex].text;
     const numberOfQuestions = document.getElementById("question-amount").value;

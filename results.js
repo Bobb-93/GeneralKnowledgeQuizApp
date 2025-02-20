@@ -5,16 +5,16 @@ const dom = {
     numberOfQuestions: document.getElementById("number-of-questions")
 };
 
-dom.retryButton.addEventListener("click", function () {
+dom.retryButton.addEventListener("click", () => {
     // location.assign("./quiz.html");  
     history.back();
 });
 
-dom.newQuizButton.addEventListener("click", function () {
+dom.newQuizButton.addEventListener("click", () => {
     location.assign("./index.html");
 });
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
 
     const correctAnswers = params.get("correctAnswers");

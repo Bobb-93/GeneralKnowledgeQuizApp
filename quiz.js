@@ -28,11 +28,11 @@ let correctAnswers = 0;
 let correctAnswer;
 
 //for testing
-// dom.finishButton.addEventListener("click", function () {
+// dom.finishButton.addEventListener("click", () => {
 //     location.assign("./results.html");
 // });
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
 
     const numberOfQuestions = params.get("numberOfQuestions");
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 finishQuizButton = document.createElement("button");
                 finishQuizButton.id = "finish-quiz-button";
                 finishQuizButton.innerText = "Finish Quiz";
-                finishQuizButton.addEventListener("click", function () {
+                finishQuizButton.addEventListener("click", () => {
                     window.location.href = `results.html?correctAnswers=${correctAnswers}&numberOfQuestions=${numberOfQuestions}`;
                 });
                 dom.optionsArea.appendChild(finishQuizButton);
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let radioInput = optionElement.querySelector("input");
             let label = optionElement.querySelector("label");
 
-            radioInput.addEventListener("change", function () {
+            radioInput.addEventListener("change", () => {
                 document.querySelectorAll("#options-area label").forEach(l => {
                     l.style.color = "black";
                     l.style.fontWeight = "normal";
