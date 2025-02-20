@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function nextQuestion() {
 
         console.log('we moveee');
-        
+
         if (currentQuestionNumber >= quizData.results.length) {
 
             let nextButton = document.getElementById("next-button");
@@ -119,8 +119,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         //timer countdown
-        
-        count = 15;
+
+        count = 5;
 
         let question = quizData.results[currentQuestionNumber];
         correctAnswer = question.correct_answer;
@@ -165,12 +165,12 @@ document.addEventListener("DOMContentLoaded", () => {
             if (count > 0) {
                 dom.countDownSpan.innerHTML = count;
                 count--;
-            } else{
+            } else {
                 clearInterval(interval);
                 dom.countDownSpan.innerHTML = "You're out of time!";
                 checkAnswer();
             }
-                
+
         }, 1000);
 
         //Show "Next button"
@@ -200,36 +200,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function checkAnswer() {
         console.log('checking...');
-        
+
         let selectedOption = document.querySelector(`input[name="answer"]:checked`);
 
         if (!selectedOption) {
+            console.log('we did not select');
+
             dom.feedbackText.style.color = "#8B0000";
             dom.feedbackText.innerText = `You have not selected an answer! The right answer is ${correctAnswer}.`;
-            nextQuestion();
-            return;
-        }
-
-        let userAnswer = selectedOption.value;
-
-        dom.feedbackText.style.visibility = "visible";
-
-        //trouble with "Romeo & Juliet" vs "Romeo &amp; Juliet" answer
-        //more trouble with: &#039; -> apostrophe 
-        if (userAnswer.replace(/&(amp);|&/g, "and").replace(/&(#039);|'/g, "apostrophe") ===
-            correctAnswer.replace(/&(amp);|&/g, "and").replace(/&(#039);|'/g, "apostrophe")) {
-
-            correctAnswers++;
-            dom.feedbackText.style.color = "#0F0";
-            dom.feedbackText.innerText = "Right Answer!";
+            // nextQuestion();
+            // return;
         } else {
-            dom.feedbackText.style.color = "#F00";
-            dom.feedbackText.innerText = `Wrong Answer! The right answer is ${correctAnswer}.`;
+            let userAnswer = selectedOption.value;
+
+            dom.feedbackText.style.visibility = "visible";
+
+            //trouble with "Romeo & Juliet" vs "Romeo &amp; Juliet" answer
+            //more trouble with: &#039; -> apostrophe 
+            if (userAnswer.replace(/&(amp);|&/g, "and").replace(/&(#039);|'/g, "apostrophe") ===
+                correctAnswer.replace(/&(amp);|&/g, "and").replace(/&(#039);|'/g, "apostrophe")) {
+
+                correctAnswers++;
+                dom.feedbackText.style.color = "#0F0";
+                dom.feedbackText.innerText = "Right Answer!";
+            } else {
+                dom.feedbackText.style.color = "#F00";
+                dom.feedbackText.innerText = `Wrong Answer! The right answer is ${correctAnswer}.`;
+            }
         }
 
-        // dom.feedbackText.style.color = "initial";
-        currentQuestionNumber++;
-        nextQuestion();
+        //// Small delay to let user see feedback
+        setTimeout(() => {
+            currentQuestionNumber++;
+            nextQuestion();
+        }, 1500);
+
     }
 
 
