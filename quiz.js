@@ -97,18 +97,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 nextButton.style.display = "none";
             }
 
-            let finishQuizButton;
+            // let finishQuizButton;
 
-            if (!finishQuizButton) {
-                finishQuizButton = document.createElement("button");
-                finishQuizButton.id = "finish-quiz-button";
-                finishQuizButton.innerText = "Finish Quiz";
-                finishQuizButton.addEventListener("click", () => {
-                    window.location.href = `results.html?correctAnswers=${correctAnswers}&numberOfQuestions=${numberOfQuestions}`;
-                });
-                dom.optionsArea.appendChild(finishQuizButton);
-            }
+            // if (!finishQuizButton) {}
 
+            let finishQuizButton = document.createElement("button");
+            finishQuizButton.id = "finish-quiz-button";
+            finishQuizButton.innerText = "Finish Quiz";
+            finishQuizButton.addEventListener("click", () => {
+                window.location.href = `results.html?correctAnswers=${correctAnswers}&numberOfQuestions=${numberOfQuestions}`;
+            });
+
+            dom.optionsArea.appendChild(finishQuizButton);
+            
             return;
         }
 
