@@ -29,6 +29,7 @@ let randomOptions = [];
 let correctAnswers = 0;
 let correctAnswer;
 let count;
+let interval;
 
 //for testing
 // dom.finishButton.addEventListener("click", () => {
@@ -116,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         //timer countdown
-        let interval;
+        
         count = 15;
 
         let question = quizData.results[currentQuestionNumber];
