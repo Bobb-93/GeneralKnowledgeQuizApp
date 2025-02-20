@@ -7,7 +7,7 @@ const dom = {
     questionText: document.getElementById("question-text"),
     optionsArea: document.getElementById("options-area"),
     feedbackText: document.getElementById("feedback-text"),
-    countDown: document.getElementById("count-down")
+    countDownSpan: document.querySelector("#count-down .game-variables")
 };
 
 function shuffleOptions(options) {
@@ -150,22 +150,24 @@ document.addEventListener("DOMContentLoaded", () => {
             dom.optionsArea.appendChild(optionElement);
         });
 
-        // let interval = setInterval(function () {
-        //     dom.countDown.innerHTML = count;
-        //     count--;
-        //     if (count === 0) {
-        //         clearInterval(interval);
-        //         dom.countDown.innerHTML = 'Done';
-        //         // or...
-        //         // alert("You're out of time!");
-        //     }
-        // }, 1000);
-
         //Show "Next button"
         if (!document.getElementById("next-button")) {
             let nextButton = document.createElement("button");
             nextButton.id = "next-button";
             nextButton.innerText = "Next";
+
+            let interval = setInterval(function () {
+                dom.countDownSpan.innerHTML = count;
+                count--;
+                if (count === 0) {
+                    dom.countDown.innerHTML = interval;
+                    clearInterval(interval);
+                    dom.countDown.innerHTML = interval;
+                    // or...
+                    // alert("You're out of time!");
+                }
+            }, 1000);
+
             nextButton.addEventListener("click", checkAnswer);
             dom.optionsArea.appendChild(nextButton);
         }
@@ -185,7 +187,10 @@ document.addEventListener("DOMContentLoaded", () => {
         dom.feedbackText.style.visibility = "visible";
 
         //trouble with "Romeo & Juliet" vs "Romeo &amp; Juliet" answer
-        if (userAnswer.replace(/&(amp);|&/g, "and") === correctAnswer.replace(/&(amp);|&/g, "and")) {
+        //more with: &#039; -> apostrophe 
+        if (userAnswer.replace(/&(amp);|&/g, "and").replace(/&(#039);|'/g, "apostrophe") === 
+            correctAnswer.replace(/&(amp);|&/g, "and").replace(/&(#039);|'/g, "apostrophe")) {
+
             correctAnswers++;
             dom.feedbackText.style.color = "#0F0";
             dom.feedbackText.innerText = "Right Answer!";
