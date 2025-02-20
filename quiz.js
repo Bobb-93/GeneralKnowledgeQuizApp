@@ -7,6 +7,7 @@ const dom = {
     questionText: document.getElementById("question-text"),
     optionsArea: document.getElementById("options-area"),
     feedbackText: document.getElementById("feedback-text"),
+    countDown: document.getElementById("count-down"),
     countDownSpan: document.querySelector("#count-down .game-variables")
 };
 
@@ -27,7 +28,7 @@ let currentQuestionNumber = 0;
 let randomOptions = [];
 let correctAnswers = 0;
 let correctAnswer;
-let count = 15;
+let count;
 
 //for testing
 // dom.finishButton.addEventListener("click", () => {
@@ -72,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!quizData || !quizData.results || quizData.results.length === 0) {
             console.error("No quiz data received.");
             dom.questionText.innerText = "Not enough questions available for this category and difficulty. Please try another category/another difficulty or reduce the number of questions.";
+            dom.countDown.innerText = "";
 
             let backButton = document.createElement("button");
             backButton.id = "back-button";
@@ -109,9 +111,13 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             dom.optionsArea.appendChild(finishQuizButton);
-            
+
             return;
         }
+
+        //timer countdown
+        let interval;
+        count = 15;
 
         let question = quizData.results[currentQuestionNumber];
         correctAnswer = question.correct_answer;
@@ -150,23 +156,39 @@ document.addEventListener("DOMContentLoaded", () => {
             dom.optionsArea.appendChild(optionElement);
         });
 
+        clearInterval(interval);
+        interval = setInterval(function () {
+
+            if (count > 0) {
+                dom.countDownSpan.innerHTML = count;
+                count--;
+            } else{
+                clearInterval(interval);
+                dom.countDownSpan.innerHTML = "You're out of time!";
+                checkAnswer();
+            }
+                
+        }, 1000);
+
         //Show "Next button"
         if (!document.getElementById("next-button")) {
             let nextButton = document.createElement("button");
             nextButton.id = "next-button";
             nextButton.innerText = "Next";
 
-            let interval = setInterval(function () {
-                dom.countDownSpan.innerHTML = count;
-                count--;
-                if (count === 0) {
-                    dom.countDown.innerHTML = interval;
-                    clearInterval(interval);
-                    dom.countDown.innerHTML = interval;
-                    // or...
-                    // alert("You're out of time!");
-                }
-            }, 1000);
+            // let interval = setInterval(function () {
+            //     dom.countDownSpan.innerHTML = count;
+
+            //     if (count === 0) {
+            //         clearInterval(interval);
+            //         dom.countDownSpan.innerHTML = "You're out of time!";
+            //         // or...
+            //         // alert("You're out of time!");
+            //         checkAnswer();
+            //         return;
+            //     }
+            //     count--;
+            // }, 1000);
 
             nextButton.addEventListener("click", checkAnswer);
             dom.optionsArea.appendChild(nextButton);
@@ -178,8 +200,10 @@ document.addEventListener("DOMContentLoaded", () => {
         let selectedOption = document.querySelector(`input[name="answer"]:checked`);
 
         if (!selectedOption) {
-            alert("Please select an answer!");
-            return;
+            dom.feedbackText.style.color = "#8B0000";
+            dom.feedbackText.innerText = `You have not selected an answer! The right answer is ${correctAnswer}.`;
+            nextQuestion();
+            // return;
         }
 
         let userAnswer = selectedOption.value;
@@ -187,8 +211,8 @@ document.addEventListener("DOMContentLoaded", () => {
         dom.feedbackText.style.visibility = "visible";
 
         //trouble with "Romeo & Juliet" vs "Romeo &amp; Juliet" answer
-        //more with: &#039; -> apostrophe 
-        if (userAnswer.replace(/&(amp);|&/g, "and").replace(/&(#039);|'/g, "apostrophe") === 
+        //more trouble with: &#039; -> apostrophe 
+        if (userAnswer.replace(/&(amp);|&/g, "and").replace(/&(#039);|'/g, "apostrophe") ===
             correctAnswer.replace(/&(amp);|&/g, "and").replace(/&(#039);|'/g, "apostrophe")) {
 
             correctAnswers++;
