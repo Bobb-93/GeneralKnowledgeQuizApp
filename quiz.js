@@ -150,7 +150,16 @@ document.addEventListener("DOMContentLoaded", () => {
             dom.optionsArea.appendChild(optionElement);
         });
 
-        let nextButton = document.getElementById("next-button");
+        // let interval = setInterval(function () {
+        //     dom.countDown.innerHTML = count;
+        //     count--;
+        //     if (count === 0) {
+        //         clearInterval(interval);
+        //         dom.countDown.innerHTML = 'Done';
+        //         // or...
+        //         // alert("You're out of time!");
+        //     }
+        // }, 1000);
 
         //Show "Next button"
         if (!document.getElementById("next-button")) {
@@ -163,17 +172,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function checkAnswer() {
-
-        // let interval = setInterval(function () {
-        //     dom.countDown.innerHTML = count;
-        //     count--;
-        //     if (count === 0) {
-        //         clearInterval(interval);
-        //         dom.countDown.innerHTML = 'Done';
-        //         // or...
-        //         // alert("You're out of time!");
-        //     }
-        // }, 1000);
 
         let selectedOption = document.querySelector(`input[name="answer"]:checked`);
 
