@@ -23,6 +23,10 @@ header {
     border: 1px solid black;
 }
 
+#options-area label:hover{
+    background-color: #b8e1ba;
+}
+
 .game-variables {
     font-style: italic;
 }
