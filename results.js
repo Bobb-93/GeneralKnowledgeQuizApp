@@ -11,16 +11,16 @@ dom.retryButton.addEventListener("click", function () {
 });
 
 dom.newQuizButton.addEventListener("click", function () {
-    location.assign("./index.html");  
+    location.assign("./index.html");
 });
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
     const params = new URLSearchParams(window.location.search);
 
     const correctAnswers = params.get("correctAnswers");
-    dom.correctAnswers.innerText  = correctAnswers;
+    dom.correctAnswers.innerText = correctAnswers;
 
     const numberOfQuestions = params.get("numberOfQuestions");
-    dom.numberOfQuestions.innerText  = numberOfQuestions;
+    dom.numberOfQuestions.innerText = numberOfQuestions;
 
 });

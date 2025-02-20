@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!quizData || !quizData.results || quizData.results.length === 0) {
             console.error("No quiz data received.");
             dom.questionText.innerText = "Not enough questions available for this category and difficulty. Please try another category/another difficulty or reduce the number of questions.";
-            
+
             let backButton = document.createElement("button");
             backButton.id = "back-button";
             backButton.innerText = "Back";
@@ -88,15 +88,15 @@ document.addEventListener("DOMContentLoaded", function () {
     function nextQuestion() {
         if (currentQuestionNumber >= quizData.results.length) {
 
-            let nextButton =  document.getElementById("next-button");
+            let nextButton = document.getElementById("next-button");
 
-            if(nextButton){
+            if (nextButton) {
                 nextButton.style.display = "none";
             }
 
             let finishQuizButton;
 
-            if(!finishQuizButton){
+            if (!finishQuizButton) {
                 finishQuizButton = document.createElement("button");
                 finishQuizButton.id = "finish-quiz-button";
                 finishQuizButton.innerText = "Finish Quiz";
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
             dom.optionsArea.appendChild(optionElement);
         });
 
-        let nextButton =  document.getElementById("next-button");
+        let nextButton = document.getElementById("next-button");
 
         //Show "Next button"
         if (!document.getElementById("next-button")) {

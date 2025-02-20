@@ -8,7 +8,7 @@ const dom = {
 };
 
 dom.categorySelect.addEventListener("change", function () {
-    if(dom.categorySelect.value){
+    if (dom.categorySelect.value) {
         dom.questionAmountLabel.style.visibility = "visible";
         dom.questionAmount.style.visibility = "visible";
         dom.difficultyLabel.style.visibility = "visible";
@@ -23,7 +23,7 @@ dom.categorySelect.addEventListener("change", function () {
 });
 
 dom.difficultySelect.addEventListener("change", function () {
-    if(dom.difficultySelect.value){
+    if (dom.difficultySelect.value) {
         dom.beginButton.style.visibility = "visible";
     } else {
         //just in case
