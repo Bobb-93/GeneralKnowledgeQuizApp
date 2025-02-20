@@ -6,7 +6,8 @@ const dom = {
     totalQuestions: document.getElementById("total-questions"),
     questionText: document.getElementById("question-text"),
     optionsArea: document.getElementById("options-area"),
-    feedbackText: document.getElementById("feedback-text")
+    feedbackText: document.getElementById("feedback-text"),
+    countDown: document.getElementById("count-down")
 };
 
 function shuffleOptions(options) {
@@ -26,6 +27,7 @@ let currentQuestionNumber = 0;
 let randomOptions = [];
 let correctAnswers = 0;
 let correctAnswer;
+let count = 15;
 
 //for testing
 // dom.finishButton.addEventListener("click", () => {
@@ -86,6 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function nextQuestion() {
+
         if (currentQuestionNumber >= quizData.results.length) {
 
             let nextButton = document.getElementById("next-button");
@@ -135,9 +138,9 @@ document.addEventListener("DOMContentLoaded", () => {
             let label = optionElement.querySelector("label");
 
             radioInput.addEventListener("change", () => {
-                document.querySelectorAll("#options-area label").forEach(l => {
-                    l.style.color = "black";
-                    l.style.fontWeight = "normal";
+                document.querySelectorAll("#options-area label").forEach(optionLabel => {
+                    optionLabel.style.color = "black";
+                    optionLabel.style.fontWeight = "normal";
                 });
                 label.style.color = "#2D96C2";
                 label.style.fontWeight = "bold";
@@ -159,6 +162,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function checkAnswer() {
+
+        // let interval = setInterval(function () {
+        //     dom.countDown.innerHTML = count;
+        //     count--;
+        //     if (count === 0) {
+        //         clearInterval(interval);
+        //         dom.countDown.innerHTML = 'Done';
+        //         // or...
+        //         // alert("You're out of time!");
+        //     }
+        // }, 1000);
+
         let selectedOption = document.querySelector(`input[name="answer"]:checked`);
 
         if (!selectedOption) {
