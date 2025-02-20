@@ -92,6 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function nextQuestion() {
 
+        console.log('we moveee');
+        
         if (currentQuestionNumber >= quizData.results.length) {
 
             let nextButton = document.getElementById("next-button");
@@ -197,14 +199,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function checkAnswer() {
-
+        console.log('checking...');
+        
         let selectedOption = document.querySelector(`input[name="answer"]:checked`);
 
         if (!selectedOption) {
             dom.feedbackText.style.color = "#8B0000";
             dom.feedbackText.innerText = `You have not selected an answer! The right answer is ${correctAnswer}.`;
             nextQuestion();
-            // return;
+            return;
         }
 
         let userAnswer = selectedOption.value;
