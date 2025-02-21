@@ -30,6 +30,7 @@ let correctAnswers = 0;
 let correctAnswer;
 let count;
 let interval;
+// let finishQuizButton;
 
 //for testing
 // dom.finishButton.addEventListener("click", () => {
@@ -99,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (currentQuestionNumber >= quizData.results.length) {
 
-            dom.countDown.style.visibility  = "hidden";
+            dom.countDown.style.visibility = "hidden";
 
             let nextButton = document.getElementById("next-button");
 
@@ -107,11 +108,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 nextButton.style.display = "none";
             }
 
-            let finishQuizButton;
 
-            if (!finishQuizButton) {
+            if (!document.getElementById("finish-quiz-button")) {
 
-                finishQuizButton = document.createElement("button");
+                let finishQuizButton = document.createElement("button");
                 finishQuizButton.id = "finish-quiz-button";
                 finishQuizButton.innerText = "Finish Quiz";
                 finishQuizButton.addEventListener("click", () => {
