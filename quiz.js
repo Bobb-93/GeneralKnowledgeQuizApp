@@ -143,7 +143,9 @@ document.addEventListener("DOMContentLoaded", () => {
         let shuffledOptions = shuffleOptions(options);
 
         dom.questionNumber.innerText = currentQuestionNumber + 1;
-        dom.questionText.innerText = question.question;
+        dom.questionText.innerText = (question.question).replace(/&(amp);/g, "&")
+                                                    .replace(/&(#039);/g, "'")
+                                                    .replace(/&(quot);|"/g, `"`);
 
         //clear optionsArea
         dom.optionsArea.innerHTML = "";
@@ -241,9 +243,9 @@ document.addEventListener("DOMContentLoaded", () => {
             dom.feedbackText.style.visibility = "visible";
 
             //trouble with "Romeo & Juliet" vs "Romeo &amp; Juliet" answer
-            //more trouble with: &#039; -> apostrophe 
-            if (userAnswer.replace(/&(amp);|&/g, "and").replace(/&(#039);|'/g, "apostrophe") ===
-                correctAnswer.replace(/&(amp);|&/g, "and").replace(/&(#039);|'/g, "apostrophe")) {
+            //more trouble with: &#039; -> apostrophe and &quot; -> quote 
+            if (userAnswer.replace(/&(amp);|&/g, "and").replace(/&(#039);|'/g, "apostrophe").replace(/&(quot);|"/g, "quote")  ===
+                correctAnswer.replace(/&(amp);|&/g, "and").replace(/&(#039);|'/g, "apostrophe").replace(/&(quot);|"/g, "quote")) {
 
                 correctAnswers++;
                 dom.feedbackText.style.color = "#0F0";
