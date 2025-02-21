@@ -30,6 +30,7 @@ let correctAnswers = 0;
 let correctAnswer;
 let count;
 let interval;
+let answered;
 
 // let nextButton;
 // let finishQuizButton;
@@ -173,6 +174,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         clearInterval(interval);
+
+        //Prevent multiple calls
+        answered = false;
+
         interval = setInterval(function () {
 
             if (count > 0) {
@@ -181,7 +186,11 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 clearInterval(interval);
                 dom.countDownSpan.innerHTML = "You're out of time!";
-                checkAnswer();
+
+                if(!answered){
+                    answered = true;
+                    checkAnswer();
+                }
             }
 
         }, 1000);
@@ -244,6 +253,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 dom.feedbackText.innerText = `Wrong Answer! The right answer is ${correctAnswer}.`;
             }
         }
+
+        answered = true;
 
         //// Small delay to let user see feedback
         setTimeout(() => {
