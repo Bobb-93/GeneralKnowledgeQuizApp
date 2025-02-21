@@ -94,7 +94,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         console.log('we moveee');
 
+        dom.feedbackText.style.visibility = "hidden";
+        dom.feedbackText.innerText = "";
+
         if (currentQuestionNumber >= quizData.results.length) {
+
+            dom.countDown.style.visibility  = "hidden";
 
             let nextButton = document.getElementById("next-button");
 
@@ -102,18 +107,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 nextButton.style.display = "none";
             }
 
-            // let finishQuizButton;
+            let finishQuizButton;
 
-            // if (!finishQuizButton) {}
+            if (!finishQuizButton) {
 
-            let finishQuizButton = document.createElement("button");
-            finishQuizButton.id = "finish-quiz-button";
-            finishQuizButton.innerText = "Finish Quiz";
-            finishQuizButton.addEventListener("click", () => {
-                window.location.href = `results.html?correctAnswers=${correctAnswers}&numberOfQuestions=${numberOfQuestions}`;
-            });
+                finishQuizButton = document.createElement("button");
+                finishQuizButton.id = "finish-quiz-button";
+                finishQuizButton.innerText = "Finish Quiz";
+                finishQuizButton.addEventListener("click", () => {
+                    window.location.href = `results.html?correctAnswers=${correctAnswers}&numberOfQuestions=${numberOfQuestions}`;
+                });
 
-            dom.optionsArea.appendChild(finishQuizButton);
+                dom.optionsArea.appendChild(finishQuizButton);
+            }
 
             return;
         }
@@ -202,12 +208,15 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log('checking...');
 
         let selectedOption = document.querySelector(`input[name="answer"]:checked`);
+        dom.feedbackText.style.visibility = "visible";
 
         if (!selectedOption) {
             console.log('we did not select');
 
             dom.feedbackText.style.color = "#8B0000";
             dom.feedbackText.innerText = `You have not selected an answer! The right answer is ${correctAnswer}.`;
+            // dom.countDown.innerHTML = `Timer: <span class="game-variables"></span>`; 
+
             // nextQuestion();
             // return;
         } else {
