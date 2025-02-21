@@ -30,6 +30,8 @@ let correctAnswers = 0;
 let correctAnswer;
 let count;
 let interval;
+
+// let nextButton;
 // let finishQuizButton;
 
 //for testing
@@ -101,13 +103,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (currentQuestionNumber >= quizData.results.length) {
 
             dom.countDown.style.visibility = "hidden";
-
+            
             let nextButton = document.getElementById("next-button");
 
             if (nextButton) {
                 nextButton.style.display = "none";
             }
-
 
             if (!document.getElementById("finish-quiz-button")) {
 
