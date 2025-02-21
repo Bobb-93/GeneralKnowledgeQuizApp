@@ -23,6 +23,12 @@ function shuffleOptions(options) {
     return shuffled;
 }
 
+function decodeHtmlEntities(text) {
+    let parser = new DOMParser();
+    let doc = parser.parseFromString(text, "text/html");
+    return doc.body.textContent || "";
+}
+
 let quizData = null;
 let currentQuestionNumber = 0;
 let randomOptions = [];
@@ -137,15 +143,17 @@ document.addEventListener("DOMContentLoaded", () => {
         count = 10;
 
         let question = quizData.results[currentQuestionNumber];
-        correctAnswer = question.correct_answer;
+        correctAnswer = decodeHtmlEntities(question.correct_answer);
         let options = [...question.incorrect_answers, correctAnswer];
 
         let shuffledOptions = shuffleOptions(options);
 
         dom.questionNumber.innerText = currentQuestionNumber + 1;
-        dom.questionText.innerText = (question.question).replace(/&(amp);/g, "&")
-                                                    .replace(/&(#039);/g, "'")
-                                                    .replace(/&(quot);|"/g, `"`);
+        dom.questionText.innerText = decodeHtmlEntities(question.question);
+
+        // dom.questionText.innerText = (question.question).replace(/&amp;/g, "&")
+        //                                             .replace(/&#039;/g, "'")
+        //                                             .replace(/&quot;/g, `"`);
 
         //clear optionsArea
         dom.optionsArea.innerHTML = "";
@@ -248,15 +256,15 @@ document.addEventListener("DOMContentLoaded", () => {
             // nextQuestion();
             // return;
         } else {
-            let userAnswer = selectedOption.value;
+            let userAnswer = decodeHtmlEntities(selectedOption.value);
 
             dom.feedbackText.style.visibility = "visible";
 
             //trouble with "Romeo & Juliet" vs "Romeo &amp; Juliet" answer
             //more trouble with: &#039; -> apostrophe and &quot; -> quote 
-            if (userAnswer.replace(/&(amp);|&/g, "and").replace(/&(#039);|'/g, "apostrophe").replace(/&(quot);|"/g, "quote")  ===
-                correctAnswer.replace(/&(amp);|&/g, "and").replace(/&(#039);|'/g, "apostrophe").replace(/&(quot);|"/g, "quote")) {
-
+            // if (userAnswer.replace(/&(amp);|&/g, "and").replace(/&(#039);|'/g, "apostrophe").replace(/&(quot);|"/g, "quote")  ===
+            //     correctAnswer.replace(/&(amp);|&/g, "and").replace(/&(#039);|'/g, "apostrophe").replace(/&(quot);|"/g, "quote")) {
+            if(userAnswer === correctAnswer){
                 correctAnswers++;
                 dom.feedbackText.style.color = "#0F0";
                 dom.feedbackText.innerText = "Right Answer!";
