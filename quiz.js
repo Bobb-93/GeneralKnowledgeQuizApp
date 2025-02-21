@@ -102,8 +102,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (currentQuestionNumber >= quizData.results.length) {
 
-            dom.countDown.style.visibility = "hidden";
+            console.dir(`dom.optionsAreaRadioButton: ${dom.optionsAreaRadioButtons}`);
             
+            document.querySelectorAll(`input[type="radio"]`).forEach( radioButton =>
+                radioButton.setAttribute("disabled", "disabled")
+            );
+
+            dom.countDown.style.visibility = "hidden";
+
             let nextButton = document.getElementById("next-button");
 
             if (nextButton) {
@@ -127,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //timer countdown
 
-        count = 5;
+        count = 10;
 
         let question = quizData.results[currentQuestionNumber];
         correctAnswer = question.correct_answer;
