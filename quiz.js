@@ -228,6 +228,16 @@ document.addEventListener("DOMContentLoaded", () => {
         let selectedOption = document.querySelector(`input[name="answer"]:checked`);
         dom.feedbackText.style.visibility = "visible";
 
+        //hide the next button to prevent multiple clicks
+        let nextButton = document.getElementById("next-button");
+        if(nextButton){
+            nextButton.style.display = "none";
+
+            //Alternatives:
+            // nextButton.disabled = true;// disable the button
+            // nextButton.style.visibility = "hidden";//make the button hidden
+        }
+
         if (!selectedOption) {
             console.log('we did not select');
 
@@ -265,7 +275,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1500);
 
     }
-
 
     startQuiz();
 

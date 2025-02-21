@@ -28,6 +28,10 @@ header {
     background-color: #b8e1ba;
 }
 
+#next-button{
+    margin-top: 17px;
+}
+
 .game-variables {
     font-style: italic;
 }
