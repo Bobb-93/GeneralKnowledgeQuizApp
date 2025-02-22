@@ -152,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
         dom.questionNumber.innerText = currentQuestionNumber + 1;
         dom.questionText.innerText = decodeHtmlEntities(question.question);
 
+        //with regex (we need to know all symbols, there are some special math symbols...)
         // dom.questionText.innerText = (question.question).replace(/&amp;/g, "&")
         //                                             .replace(/&#039;/g, "'")
         //                                             .replace(/&quot;/g, `"`);
@@ -211,20 +212,6 @@ document.addEventListener("DOMContentLoaded", () => {
             let nextButton = document.createElement("button");
             nextButton.id = "next-button";
             nextButton.innerText = "Next";
-
-            // let interval = setInterval(function () {
-            //     dom.countDownSpan.innerHTML = count;
-
-            //     if (count === 0) {
-            //         clearInterval(interval);
-            //         dom.countDownSpan.innerHTML = "You're out of time!";
-            //         // or...
-            //         // alert("You're out of time!");
-            //         checkAnswer();
-            //         return;
-            //     }
-            //     count--;
-            // }, 1000);
 
             nextButton.addEventListener("click", checkAnswer);
             dom.optionsArea.appendChild(nextButton);
