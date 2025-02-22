@@ -106,6 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         dom.feedbackText.style.visibility = "hidden";
         dom.feedbackText.innerText = "";
+        dom.countDown.style.visibility = "visible";
 
         if (currentQuestionNumber >= quizData.results.length) {
 
@@ -140,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //timer countdown
 
-        count = 10;
+        count = 15;
 
         let question = quizData.results[currentQuestionNumber];
         correctAnswer = decodeHtmlEntities(question.correct_answer);
@@ -231,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function checkAnswer() {
-        console.log('checking...');
+        console.log('Checking answer...');
 
         let selectedOption = document.querySelector(`input[name="answer"]:checked`);
         dom.feedbackText.style.visibility = "visible";
@@ -245,6 +246,11 @@ document.addEventListener("DOMContentLoaded", () => {
             // nextButton.disabled = true;// disable the button
             // nextButton.style.visibility = "hidden";//make the button hidden
         }
+
+        //Reset interval
+        clearInterval(interval);
+        dom.countDown.style.visibility = "hidden";
+        dom.countDownSpan.innerText = "";
 
         if (!selectedOption) {
             console.log('we did not select');

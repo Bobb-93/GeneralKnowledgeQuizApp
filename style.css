@@ -29,7 +29,7 @@ header {
 }
 
 #next-button{
-    margin-top: 17px;
+    margin-top: 10px;
 }
 
 .game-variables {
@@ -58,7 +58,6 @@ button {
     color: #FFF;
     border: none;
     cursor: pointer;
-    margin-top: 5px;
     border-radius: 15%;
 }
 
