@@ -3,6 +3,7 @@ const dom = {
     displayDifficulty: document.getElementById("display-difficulty"),
     finishButton: document.getElementById("finish-button"),
     questionNumber: document.getElementById("question-number"),
+    questionProgress: document.getElementById("question-progress"),
     totalQuestions: document.getElementById("total-questions"),
     questionText: document.getElementById("question-text"),
     optionsArea: document.getElementById("options-area"),
@@ -85,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("No quiz data received.");
             dom.questionText.innerText = "Not enough questions available for this category and difficulty. Please try another category/another difficulty or reduce the number of questions.";
             dom.countDown.innerText = "";
+            dom.questionProgress.style.visibility = "hidden";
 
             let backButton = document.createElement("button");
             backButton.id = "back-button";
