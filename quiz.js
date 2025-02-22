@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function nextQuestion() {
 
-        console.log('we moveee');
+        console.log('Next question...');
 
         dom.feedbackText.style.visibility = "hidden";
         dom.feedbackText.innerText = "";
@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
         dom.countDownSpan.innerText = "";
 
         if (!selectedOption) {
-            console.log('we did not select');
+            console.log('We did not select...');
 
             dom.feedbackText.style.color = "#8B0000";
             dom.feedbackText.innerText = `You have not selected an answer! The right answer is ${correctAnswer}.`;
